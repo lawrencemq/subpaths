@@ -1,5 +1,6 @@
 from collections import defaultdict
 from itertools import chain
+from functools import reduce
 
 
 def __find_all_subpaths_in_path(path):
@@ -24,3 +25,17 @@ def find_all_subpath_occurrences(*paths) -> dict:
         sub_paths[sub_path] += 1
 
     return sub_paths
+
+
+def find_all_common_subpaths_between(*paths) -> set:
+    """
+    Generates all subpaths from the given paths and finds all of the common subpaths
+    :param paths: Any number of paths given as a list
+    :return: Set of subpaths that are common amnong all paths
+    """
+    if len(paths) == 0:
+        return set()
+
+    return reduce(lambda y, z: y & z,
+                  map(lambda x: set(__find_all_subpaths_in_path(x)), paths),
+                  )

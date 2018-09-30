@@ -1,9 +1,9 @@
 from unittest import TestCase
 
-from subpaths.subpaths import find_all_subpath_occurrences
+from subpaths.subpaths import find_all_subpath_occurrences, find_all_common_subpaths_between
 
 
-class TestSubpaths(TestCase):
+class TestSubpathOccurrences(TestCase):
 
     def test_finds_paths_for_single_path(self):
         path = [1, 2, 3, 4, 5]
@@ -67,3 +67,35 @@ class TestSubpaths(TestCase):
     def test_finds_no_paths_when_given_nothing(self):
         expected_paths = {}
         self.assertEqual(expected_paths, find_all_subpath_occurrences())
+
+
+class TestCommonSubpath(TestCase):
+
+    def test_find_all_common_subpaths_between__with_intersections(self):
+        path1 = [1, 2, 3, 4, 5]
+        path2 = [3, 4, 5, 6, 7]
+        expected_paths = {(3, 4), (4, 5), (3, 4, 5)}
+        self.assertEqual(expected_paths, find_all_common_subpaths_between(path1, path2))
+
+    def test_find_all_common_subpaths_between__with_intersections__complex(self):
+        path1 = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+        path2 = [3, 4, 5, 6, 7]
+        path3 = [4, 5]
+        expected_paths = {(4, 5)}
+        self.assertEqual(expected_paths, find_all_common_subpaths_between(path1, path2, path3))
+
+    def test_find_all_common_subpaths_between__no_intersections(self):
+        path1 = [1, 2, 3, 4, 5]
+        path2 = [6, 7, 8, 9, 10]
+        expected_paths = set()
+        self.assertEqual(expected_paths, find_all_common_subpaths_between(path1, path2))
+
+    def test_find_all_common_subpaths_between__single_path(self):
+        path1 = [1, 2, 3, 4, 5]
+        expected_paths = {(1, 2), (1, 2, 3, 4), (4, 5), (1, 2, 3, 4, 5), (1, 2, 3), (2, 3), (3, 4, 5), (2, 3, 4),
+                          (2, 3, 4, 5), (3, 4)}
+        self.assertEqual(expected_paths, find_all_common_subpaths_between(path1))
+
+    def test_find_all_common_subpaths_between__no_paths(self):
+        expected_paths = set()
+        self.assertEqual(expected_paths, find_all_common_subpaths_between())

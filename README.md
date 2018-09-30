@@ -1,8 +1,30 @@
 # Subpaths
-Finding common subpaths between paths.
+Finding common subpaths and counting occurrences of all subpaths between paths.
 
 
-## Example
+## Examples
+
+### Finding common subpaths between paths
+
+```
+from pprint import pprint
+from subpaths.subpaths import find_all_common_subpaths_between
+
+path_a = [1, 2, 3, 4, 5]
+path_b = [3, 4, 5, 7]
+path_c = [2, 3, 4, 8, 9, 7]
+
+pprint(find_all_common_subpaths_between(path_a, path_b, path_c))
+```
+
+Will return:
+
+```
+{(3, 4)}
+```
+
+
+### Counting all subpaths between paths
 
 ```
 from pprint import pprint

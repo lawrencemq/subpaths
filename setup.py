@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="subpaths",
-    version="0.1.0",
+    version="0.2.0",
     author="Lawrence Weikum",
     author_email="lweikum@gmail.com",
     description="Finding common subpaths between paths.",
