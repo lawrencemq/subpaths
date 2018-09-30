@@ -7,7 +7,7 @@ setuptools.setup(
     name="subpaths",
     version="0.1.0",
     author="Lawrence Weikum",
-    author_email="Lawrence Weikum",
+    author_email="lweikum@gmail.com",
     description="Finding common subpaths between paths.",
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -17,7 +17,7 @@ setuptools.setup(
     packages=setuptools.find_packages(),
     license='MIT',
     classifiers=[
-        'Programming Language :: Python :: 2.7'
+        'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
         'License :: OSI Approved :: MIT License',
         'Development Status :: 4 - Beta',
